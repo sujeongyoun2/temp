@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>I.Helpr Homepage</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* Modify the background color */
+        .navbar-custom {
+            background-color: #83bca9;
+        }
+
+        /* Modify brand and text color */
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: #28493e;
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <!-- <link href="homepage.css" rel="stylesheet"> -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/homePage.css' %}">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-custom navbar-expand-md navbar-dark fixed-top">
+            <a class="navbar-brand" href="homepage.html">I.Helpr</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="homepage.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="forParents.html">For Parents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="forSitters.html">For Sitters</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="myPage.html">My Page</a>
+                    </li>
+                </ul>
+                <form class="form-inline mt-2 mt-md-0">
+                    {% if member_no == None %}
+                    <a class="btn btn-outline-light my-2 my-sm-0" href="signUp.html">Sign up</a>
+                    <a class="btn btn-outline-light my-2 my-sm-0" href="logIn.html">Log in</a>
+                    {% else %}
+                    <a class="btn btn-outline-light my-2 my-sm-0" href="myPage">Hello {{ member_name }}!</a>
+                    <a class="btn btn-outline-light my-2 my-sm-0" href="log_out">Log Out</a>
+                    {% endif %}
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col order-md-1">
+                <h2> </h2>
+                <br>
+                <h2>For Parents</h2>
+                <div style="border: 1px solid; border-radius: 5px; padding: 10px;">
+                    <h4 class="mb-3">Filters</h4>
+                    <form class="needs-validation" novalidate>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <p>What service do you want?</p>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-info">House sitter</button>
+                                    <button type="button" class="btn btn-info">Play sitter</button>
+                                    <button type="button" class="btn btn-info">Learning sitter</button>
+                                    <button type="button" class="btn btn-info">Day care</button>
+                                    <button type="button" class="btn btn-info">Else</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="container">
+                                    <div class="slider">
+                                        <p>Pay rate</p>
+                                        <input type="range" min="8500" max="50000" onchange="rangevalue.value=value" />
+                                        <output id="rangevalue">10000</output>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="mb-1">
+                        <p>Work Period</p>
+                        <div class="row">
+                            <div class="custom-control custom-radio" style="margin-left: 15px;">
+                                <input id="short" name="paymentMethod" type="radio" class="custom-control-input"
+                                    checked>
+                                <label class="custom-control-label" for="short">Short (1day - 1month) </label>
+                            </div>
+                            <div class="custom-control custom-radio" style="margin-left: 20px;">
+                                <input id="medium" name="paymentMethod" type="radio" class="custom-control-input">
+                                <label class="custom-control-label" for="medium">Medium (1month - 6month) </label>
+                            </div>
+                            <div class="custom-control custom-radio" style="margin-left: 20px;">
+                                <input id="long" name="paymentMethod" type="radio" class="custom-control-input">
+                                <label class="custom-control-label" for="long">Long (6month - 1year)</label>
+                            </div>
+                        </div>
+
+                        <hr class="mb-1">
+                        <p>Work Time</p>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="example-time-input">From</label>
+                                <input class="form-control" type="time" value="11:45:00" id="example-time-input">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="example-time-input">To</label>
+                                <input class="form-control" type="time" value="15:45:00" id="example-time-input">
+                            </div>
+                        </div>
+
+                        <hr class="mb-1">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="location">Location</label>
+                                <select class="custom-select d-block" id="location">
+                                    <option value="">Choose...</option>
+                                    <option value="songdo1">Sondo 1dong</option>
+                                    <option value="songdo2">Sondo 2dong</option>
+                                    <option value="songdo3">Sondo 3dong</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="gender">Gender</label>
+                                <select class="custom-select d-block" id="gender">
+                                    <option value="notSelected">Do not want to choose</option>
+                                    <option value="female">Female</option>
+                                    <option value="male">Male</option>
+                                    <option value="else">Else</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+
+                        <button class="btn btn-info btn-lg btn-block" type="submit">Search</button>
+                    </form>
+                </div>
+                <br>
+
+                <div class="search-container">
+
+                    <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="post">
+                        {% csrf_token %}
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search with title"
+                            aria-label="Search" name="q" value="{{q}}">
+                        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+
+
+                    {% if member_type == "S" %}
+                    <A HREF="postPage.html" class="btn btn-lg btn-warning" style="float: right;">Post a job-wanted</A>
+                    {% endif %}
+                </div>
+                <br>
+                <div class="container">
+                    <table class="table">
+
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Tilte</th>
+                                <th>Location</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in rsFor %}
+                            <tr>
+                                <td>{{i.parent_Name}}</td>
+                                <td><a href="viewPost_forParents?p_id={{i.b_id}}">{{i.parent_Title}}</a> </td>
+                                <td>{{i.parent_Location}}</td>
+                                <td>{{i.parent_Date | date:"Y-m-d"}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <nav aria-label="Page navigation example">
+
+                    <ul class="pagination">
+
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item"><a class="page-link" href="#">6</a></li>
+                        <li class="page-item"><a class="page-link" href="#">7</a></li>
+                        <li class="page-item"><a class="page-link" href="#">8</a></li>
+                        <li class="page-item"><a class="page-link" href="#">9</a></li>
+                        <li class="page-item"><a class="page-link" href="#">10</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <!-- <script src="form-validation.js"></script> -->
+</body>
+
+</html>

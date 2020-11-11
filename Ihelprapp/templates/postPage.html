@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<!-- POST JOB WANTED -->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>I.Helpr Homepage</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    {% block scripts %}
+    <script>
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        var csrftoken = getCookie('csrftoken');
+        var xhr;
+
+
+        function writePost(e) {
+
+            e.preventDefault()
+            // alert(e);
+            var parentService = document.getElementById("postType").value;
+            // alert(parentService);
+
+            if (parentService == "1") {
+                alert('parentService를 선택하세요');
+                return false;
+            }
+            // alert(parentService);
+
+            if (document.getElementById('short').checked) {
+                parentWorkperiod = "Short"
+            }
+            else if (document.getElementById('medium').checked) {
+                parentWorkperiod = "Medium"
+            }
+            else if (document.getElementById('long').checked) {
+                parentWorkperiod = "Long"
+            }
+            else {
+                alert('Select work period...')
+                return false
+            }
+            // alert(parentWorkperiod);
+            // return false;
+
+
+            //텍스트에서 입력을 해서 넣는곳들
+            parentTitle = document.getElementById("parent_Title").value;
+            parentName = document.getElementById("parent_Name").value;
+            parentLocation = document.getElementById("postLocation").value;
+            parentPayrate = document.getElementById("parent_Payrate").value;
+            parentNote = document.getElementById("parent_Note").value;
+
+
+            //여러가지 옵션에서 골라서 넣는것들
+            parentGender = document.getElementById("parent_Gender").value;
+
+            // parentWorkperiod = document.getElementById("parent_Workperiod").value;
+            // alert(parentWorkperiod);
+
+            //타임을 클릭해서 넣는것들
+            parentTimefrom = document.getElementById("parent_Timefrom").value;
+            // alert(parentTimefrom);
+            parentWorkto = document.getElementById("parent_Workto").value;
+            // alert(parentWorkto);
+
+            // if (title == "") {
+            //     alert("no Title");
+            //     document.getElementById("title").focus();
+            //     return false;
+            // }
+
+            // return false;
+
+            strurl = "postJobwant?parent_Title=" + parentTitle + "&parent_Name=" + parentName + "&parent_Location=" + parentLocation + "&parent_Payrate=" + parentPayrate + "&parent_Note=" + parentNote + "&parent_Gender=" + parentGender + "&parent_Timefrom=" + parentTimefrom + "&parent_Workto=" + parentWorkto + "&parent_Service=" + parentService + "&parent_Workperiod=" + parentWorkperiod;
+            // alert(strurl);
+            // return false;
+            xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    var data = xhr.responseText;
+                    var obj = JSON.parse(data);
+                    alert(obj.result);
+                    // if (obj.flag == "1") {
+                    //     location.href = "forParents";
+                    // }
+                    location.href = "forParents";
+                }
+            };
+            xhr.open("GET", strurl);
+            // alert(strul);
+            // return false;
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            xhr.send(null);
+        }
+        function typeValue(element) {
+            document.getElementById("postType").value = element.value;
+        }
+    </script>
+    {% endblock %}
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* Modify the background color */
+        .navbar-custom {
+            background-color: #83bca9;
+        }
+
+        /* Modify brand and text color */
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: #28493e;
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <!-- <link href="homepage.css" rel="stylesheet">
+    <link href="myPage.css" rel="stylesheet"> -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/homePage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/myPage.css' %}">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-custom navbar-expand-md navbar-dark fixed-top">
+            <a class="navbar-brand" href="homepage.html">I.Helpr</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="homepage.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="forParents.html">For Parents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="forSitters.html">For Sitters</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="myPage.html">My Page</a>
+                    </li>
+                </ul>
+                <form class="form-inline mt-2 mt-md-0">
+                    {% if member_no == None %}
+                    <a class="btn btn-outline-light my-2 my-sm-0" href="signUp.html">Sign up</a>
+                    <a class="btn btn-outline-light my-2 my-sm-0" href="logIn.html">Log in</a>
+                    {% else %}
+                    <a class="btn btn-outline-light my-2 my-sm-0" href="myPage">Hello {{ member_name }}!</a>
+                    <a class="btn btn-outline-light my-2 my-sm-0" href="log_out">Log Out</a>
+                    {% endif %}
+                </form>
+            </div>
+        </nav>
+    </header>
+    <input type="hidden" id="postType" value="House Sitter">
+    <div class="container">
+        <h2>Write a Post</h2>
+        <div class="col-md-12 ">
+            <hr class="mb-4">
+            <h4 style="color:#88beac;">Choose Conditions</h4>
+            <form class="needs-validation" novalidate>
+
+                <!-- work service -->
+                <p>What service do you want?</p>
+                <div class="btn-group" id="parent_Service">
+                    <button value="House Sitter" onclick="typeValue(this)" type="button" class="btn btn-info">House
+                        sitter</button>
+                    <button value="Play" onclick="typeValue(this)" type="button" class="btn btn-info">Play
+                        sitter</button>
+                    <button value="Learning" onclick="typeValue(this)" type="button" class="btn btn-info">Learning
+                        sitter</button>
+                    <button value="Daycare" onclick="typeValue(this)" type="button" class="btn btn-info">Day
+                        care</button>
+                    <button value="Else" onclick="typeValue(this)" type="button" class="btn btn-info">Else</button>
+                </div>
+
+                <!-- work period -->
+                <p>Work Period</p>
+                <div class="row" id="parent_Workperiod">
+                    <div class="custom-control custom-radio" style="margin-left: 15px;">
+                        <input id="short" value="Short" name="paymentMethod" type="radio" class="custom-control-input">
+                        <label class="custom-control-label" for="short">Short (1day - 1month) </label>
+                    </div>
+                    <div class="custom-control custom-radio" style="margin-left: 20px;">
+                        <input id="medium" value="Medium" name="paymentMethod" type="radio"
+                            class="custom-control-input">
+                        <label class="custom-control-label" for="medium">Medium (1month - 6month) </label>
+                    </div>
+                    <div class="custom-control custom-radio" style="margin-left: 20px;">
+                        <input id="long" value="Long" name="paymentMethod" type="radio" class="custom-control-input">
+                        <label class="custom-control-label" for="long">Long (6month - 1year)</label>
+                    </div>
+                </div>
+
+                <hr class="mb-4">
+                <p>Work Time</p>
+                <div class="row">
+                    <!-- work time from -->
+                    <div class="col-md-6 mb-3">
+                        <label for="example-time-input">From</label>
+                        <input class="form-control" type="time" value="11:45:00" id="parent_Timefrom">
+                    </div>
+                    <!-- work time to -->
+                    <div class="col-md-6 mb-3">
+                        <label for="example-time-input">To</label>
+                        <input class="form-control" type="time" value="15:45:00" id="parent_Workto">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="location">Location</label>
+                        <input type="text" class="form-control" id="postLocation" rows="1"
+                            placeholder="Sondo 1dong~Songdo 3dong"></input>
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="col-md-6 mb-3">
+                        <label for="gender">Gender</label>
+                        <select class="custom-select d-block" id="parent_Gender">
+                            <option value="notSelected">Do not want to choose</option>
+                            <option value="female">Female</option>
+                            <option value="male">Male</option>
+                            <option value="else">Else</option>
+                        </select>
+                    </div>
+                </div>
+
+                <p>Pay rate</p>
+                <div class="custom-file col-md-3">
+                    <input class="form-control" type="number" value="9000" id="parent_Payrate">
+                </div>
+
+
+                <br>
+                <hr class="mb-4">
+                <h4 style="color:#88beac;">Write a Title and Content</h4>
+                <div class="custom-file">
+                    <label for="exampleTextarea">Title</label>
+                    <textarea class="form-control" id="parent_Title" rows="1"></textarea>
+                    <label for="exampleTextarea">Writer</label>
+                    <textarea class="form-control" id="parent_Name" rows="1"></textarea>
+                    <label for="exampleTextarea">Content</label>
+                    <textarea class="form-control" id="parent_Note" rows="5"></textarea>
+
+                    <hr class="mb-4">
+                    <p>Upload files if you need to</p>
+                    <div class="custom-file col-md-6 mb-3">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01"
+                            aria-describedby="inputGroupFileAddon01">
+                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    </div>
+                </div>
+
+            </form>
+
+            <hr class="mb-4">
+
+            <div>
+                <!-- <button class="btn btn-lg btn-info" onclick="writePost()" style="float: right;">Post</button> -->
+                <!-- <button class="btn btn-lg btn-info" onclick="writePost(event);" style="float: right;"
+                    formaction="forParents.html">Post</button> -->
+
+                <button class="btn btn-lg btn-info" onclick="writePost(event);" style="float: right;">Post</button>
+            </div>
+            <br>
+        </div>
+
+    </div>
+</body>
+
+</html>

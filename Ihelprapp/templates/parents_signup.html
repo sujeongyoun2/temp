@@ -1,0 +1,225 @@
+<!doctype html>
+
+{% block scripts %}
+
+<script>
+
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+
+    var xhr;
+
+    function registerMember() {
+
+        memberid = document.getElementById("member_id").value;
+        if (memberid == "") {
+            alert("Id is empty");
+            document.getElementById("member_id").focus();
+            return false;
+        }
+
+        memberpwd = document.getElementById("member_pwd").value;
+        if (memberid == "") {
+            alert("Password is empty");
+            document.getElementById("member_pwd").focus();
+            return false;
+        }
+
+        memberpwd2 = document.getElementById("member_pwd2").value;
+        if (memberid == "") {
+            document.getElementById("member_pwd2").focus();
+            return false;
+        }
+        if (memberpwd != memberpwd2) {
+            alert("Password is not match");
+            document.getElementById("member_pwd2").focus();
+            return false;
+        }
+        // encpwd = hex_sha1(memberpwd)
+
+        membername = document.getElementById("member_name").value;
+        memberemail = document.getElementById("member_email").value;
+
+        // if (title == "") {
+        //     alert("no Title");
+        //     document.getElementById("title").focus();
+        //     return false;
+        // }
+
+        var strurl = "member_insert?member_id=" + memberid + "&member_pwd=" + memberpwd + "&member_name=" + membername + "&member_email=" + memberemail + "&member_type=P";
+        // alert(strurl);
+        // return false;
+
+        xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                var data = xhr.responseText;
+                var obj = JSON.parse(data);
+                alert(obj.result);
+                // if (obj.flag == "1") {
+                //     location.href = "/";
+                // }
+                location.href = "/"
+            }
+        };
+        xhr.open("GET", strurl);
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        xhr.send(null);
+    }
+</script>
+{% endblock %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>I.Helpr Homepage</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* Modify the background color */
+        .navbar-custom {
+            background-color: #83bca9;
+        }
+
+        /* Modify brand and text color */
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: #28493e;
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <!-- <link href="homepage.css" rel="stylesheet">
+    <link href="myPage.css" rel="stylesheet"> -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/homePage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/myPage.css' %}">
+</head>
+
+<body>
+    <header>
+        <!-- <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-success"> -->
+        <nav class="navbar navbar-custom navbar-expand-md navbar-dark fixed-top">
+            <a class="navbar-brand" href="homepage.html">I.Helpr</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="homepage.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="forParents.html">For Parents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="forSitters.html">For Sitters</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="myPage.html">My Page</a>
+                    </li>
+                </ul>
+                <form class="form-inline mt-2 mt-md-0">
+                    <a class="btn btn-outline-light my-2 my-sm-0" href="signUp.html">Sign up</a>
+                    <a class="btn btn-outline-light my-2 my-sm-0" href="logIn.html">Log in</a>
+                </form>
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="container" style="padding-left: 15px;">
+        <div class="py-5 text-center">
+            <h2>Parent User Sign Up Form</h2>
+        </div>
+
+        <div class="col-md-8 order-md-1" style="max-width: 70%; margin: auto;">
+            <form class="needs-validation" novalidate>
+
+                <div class="row">
+                    <div class="col-sm-8">ID
+                        <input type="text" class="form-control" name="member_id" id="member_id"
+                            placeholder="Type the ID" required>
+
+                        <div class="row">
+                            <div class="col-sm-6">Password<input type="password" class="form-control" name="member_pwd"
+                                    id="member_pwd" required></div>
+                            <div class="col-sm-6">Confirm Password<input type="password" class="form-control"
+                                    name="member_pwd2" id="member_pwd2" required></div>
+                        </div>
+
+                        <label for="firstName">Parent's name</label>
+                        <input type="text" class="form-control" name="member_name" id="member_name">
+
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="member_email" id="member_email"
+                        placeholder="you@example.com">
+                    <div class="invalid-feedback">
+                        Please enter a valid email address.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="contact_num">Contact number</label>
+                    <input type="text" class="form-control" id="contact_num" placeholder="010-xxxx-xxxx" required>
+                    <div class="invalid-feedback">
+                        Please enter your contact number.
+                    </div>
+                </div>
+
+                <hr class="mb-4" style="margin-top: 35px; margin-bottom: 65px;">
+                <div class="text-center">
+                    <a class="btn btn-info btn-lg btn-block" style="width: 20%; margin: 0 auto;"
+                        onclick="registerMember();" type="submit">Submit</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+<!doctype html>
+
+{% block scripts %}
+<script>
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    var csrftoken = getCookie('csrftoken');
+
+    var xhr;
+
+    function askQuestion() {
+
+        title = document.getElementById("title").value;
+        if (title == "") {
+            alert("no Title");
+            document.getElementById("title").focus();
+            return false;
+        }
+        var strurl = "askCreated?title_b=" + title;
+
+        xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                var data = xhr.responseText;
+                var obj = JSON.parse(data);
+                alert(obj.result);
+                // if (obj.flag == "1") {
+                //     location.href = "/";
+                // }
+                location.href = "qna"
+            }
+        };
+        xhr.open("GET", strurl);
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        xhr.send(null);
+    }
+</script>
+{% endblock %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>I.Helpr Homepage</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* Modify the background color */
+        .navbar-custom {
+            background-color: #83bca9;
+        }
+
+        /* Modify brand and text color */
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: #28493e;
+        }
+
+        #row_style {
+            margin-top: 30px;
+        }
+
+        #submit {
+            display: block;
+            margin: auto;
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <!-- <link href="homepage.css" rel="stylesheet">
+  <link href="myPage.css" rel="stylesheet"> -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/myPage.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/about.css' %}"> -->
+    <link rel="stylesheet" type="text/css"
+        href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
+    <script type="text/javascript"
+        src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <!-- <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-success"> -->
+        <nav class="navbar navbar-custom navbar-expand-md navbar-dark fixed-top">
+            <a class="navbar-brand" href="homepage.html">I.Helpr</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="homepage.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="forParents.html">For Parents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="forSitters.html">For Sitters</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="myPage.html">My Page</a>
+                    </li>
+                </ul>
+                <form class="form-inline mt-2 mt-md-0">
+                    <a class="btn btn-outline-light my-2 my-sm-0" href="signUp.html">Sign up</a>
+                    <a class="btn btn-outline-light my-2 my-sm-0" href="logIn.html">Log in</a>
+                </form>
+            </div>
+        </nav>
+    </header>
+</body>
+
+<div class="container">
+    <div class="row" id="row_style">
+
+        <div class="col-md-3   offset-md-3">
+            <h4 class="text-xs-center">Ask Any Question</h4>
+            <br>
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" id="title" placeholder="Title">
+            </div>
+            <div class="form-group">
+                <label for="title">Date:</label>
+                <br>
+                <!-- <input type="text" class="form-control" placeholder="Date"> -->
+                <form>
+                    <input type='date' id='currentDate' />
+                </form>
+                <script>
+                    document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);;
+                </script>
+            </div>
+            <textarea id="editor" cols="37" rows="10" placeholder="Type a new question here"></textarea>
+            <br>
+            <br>
+            <div class="form-group">
+                <button class="btn btn-primary" onclick="askQuestion()" id="submit">Submit New Qeustion</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $("#editor").shieldEditor({
+            height: 260
+        });
+    })
+</script>
+
+</html>

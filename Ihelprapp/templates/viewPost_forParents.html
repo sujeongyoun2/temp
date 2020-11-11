@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>I.Helpr viewPost</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* Modify the background color */
+        .navbar-custom {
+            background-color: #83bca9;
+        }
+
+        /* Modify brand and text color */
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: #28493e;
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <!-- <link href="homepage.css" rel="stylesheet">
+    <link href="base.css" rel="stylesheet"> -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/homePage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-custom navbar-expand-md navbar-dark fixed-top">
+            <a class="navbar-brand" href="homepage.html">I.Helpr</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="homepage.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="forParents.html">For Parents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="forSitters.html">For Sitters</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="myPage.html">My Page</a>
+                    </li>
+                </ul>
+                <form class="form-inline mt-2 mt-md-0">
+                    <a class="btn btn-outline-light my-2 my-sm-0" href="homepage.html">Log out</a>
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2> Detail </h2>
+        <div class="col-md-12 ">
+            <h4 style="color:#88beac;">View Post</h4>
+            <div class="custom-file">
+                <h3>{{pDetail.parent_Title}}</h3>
+                <p style="text-align: right;">{{pDetail.parent_Name}} | {{pDetail.parent_Date}}</p>
+                <div class="card">
+                    <p> {{pDetail.parent_Note}} </p>
+                </div>
+
+            </div>
+            <br>
+            <hr class="mb-4">
+
+            <br>
+            <h4 style="color:#88beac;"> Conditions</h4>
+            <form class="needs-validation" novalidate>
+                <p>What service do you want?</p>
+                <input readonly class="form-control" value="{{pDetail.parent_Service}}">
+
+                <hr class="mb-4">
+                <p>Work Period</p>
+                <input readonly class="form-control" value="{{pDetail.parent_Workperiod}}">
+                <hr class="mb-4">
+                <p>Work Time</p>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="example-time-input">From</label>
+                        <input readonly class="form-control" value="{{pDetail.parent_Timefrom}}">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="example-time-input">To</label>
+                        <input readonly class="form-control" value="{{pDetail.parent_Workto}}">
+                    </div>
+                </div>
+
+                <hr class="mb-4">
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <label for="location">Location</label>
+                        <br>
+                        <input readonly class="form-control" value=" {{pDetail.parent_Location}}">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="gender">Gender</label>
+                        <br>
+                        <input readonly class="form-control" value=" {{pDetail.parent_Gender}}">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="payrate">Pay rate</label>
+                        <br>
+                        <input readonly class="form-control" value=" {{pDetail.parent_Payrate}}">
+                    </div>
+                </div>
+
+                <hr class="mb-4">
+                <p>Upload files if you need to</p>
+                <div class="custom-file col-md-6 mb-3">
+                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                        aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+            </form>
+
+            <hr class="mb-4">
+            <div class="applybutton">
+                <!-- <a class="btn btn-outline-light my-2 my-sm-0" href="signUp.html">Sign up</a> -->
+                <a rel="prev" type="button" class="btn btn-light" href="forParents.html" style="float: right;">Go
+                    back</a>
+                <a class="btn btn-warning" href="messagesBox.html">Send Message</a>
+            </div>
+            <br>
+        </div>
+    </div>
+</body>
+
+</html>

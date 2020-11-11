@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Jekyll v4.1.1">
+  <title>Sign up</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    /* Modify the background color */
+    .navbar-custom {
+      background-color: #83bca9;
+    }
+
+    /* Modify brand and text color */
+    .navbar-custom .navbar-brand,
+    .navbar-custom .navbar-text {
+      color: #28493e;
+    }
+  </style>
+  <!-- Custom styles for this template -->
+  <!-- <link href="logIn.css" rel="stylesheet"> -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/logIn.css' %}">
+</head>
+
+<body class="text-center">
+  <header>
+    <nav class="navbar navbar-custom navbar-expand-md navbar-dark fixed-top">
+      <a class="navbar-brand" href="homepage.html">I.Helpr</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="homepage.html">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="forParents.html">For Parents</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="forSitters.html">For Sitters</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="myPage.html">My Page</a>
+          </li>
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+          <a class="btn btn-outline-light my-2 my-sm-0" href="signUp">Sign up</a>
+          <a class="btn btn-outline-light my-2 my-sm-0" href="logIn.html">Sign in</a>
+        </form>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="card-deck mb-3 text-center">
+      <div class="card mb-4 shadow-lg">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">For Parents</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">Sign up as a parent user!</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Looking for sitters?</li>
+            <li>Sign up and see the list of sitters!</li>
+            <li>You can choose by the conditions you want.</li>
+          </ul>
+          <form>
+          <a class="btn btn-lg btn-block btn-outline-info" href="parents_signup.html">Sign up for free</a>
+          </form>
+        </div>
+      </div>
+      <div class="card mb-4 shadow-lg">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">For Sitters</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">Sign up as a sitter user!</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Looking for jobs?</li>
+            <li>Sign up and see the list of jobs!</li>
+            <li>You can choose by the conditions you want.</li>
+          </ul>
+          <form>
+            <a class="btn btn-lg btn-block btn-outline-info" href="sitters_signup.html">Sign up for free</a>
+          </form>
+        </div>
+      </div>
+    </div>
+    <a href="logIn.html">Already signed up!</a>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>I.Helpr Homepage</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* Modify the background color */
+        .navbar-custom {
+            background-color: #83bca9;
+        }
+
+        /* Modify brand and text color */
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: #28493e;
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <!-- <link href="homepage.css" rel="stylesheet">
+    <link href="base.css" rel="stylesheet"> -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/homePage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+
+<body>
+    <header>
+        <!-- <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-success"> -->
+        <nav class="navbar navbar-custom navbar-expand-md navbar-dark fixed-top">
+            <a class="navbar-brand" href="homepage.html">I.Helpr</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="homepage.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="forParents.html">For Parents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="forSitters.html">For Sitters</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="myPage.html">My Page</a>
+                    </li>
+                </ul>
+                <form class="form-inline mt-2 mt-md-0">
+                    <a class="btn btn-outline-light my-2 my-sm-0" href="signUp.html">Sign up</a>
+                    <a class="btn btn-outline-light my-2 my-sm-0" href="logIn.html">Log in</a>
+                </form>
+            </div>
+        </nav>
+    </header>
+
+</body>
+
+<div class="row">
+    <div>
+        <br>
+        <div class="card">
+
+            <h2>Hello</h2>
+            <h5>Looking for a sitter, Dec 7, 2017</h5>
+
+            <p>I need someone to take care of my baby.</p>
+
+            <p> I am looking for after-school babysitter position </p>
+
+            <p>My children are highly active, and they like playing with others.
+                All you need to do is to drive children to home from sports activities to initiating and monitoring games and arts & crafts
+                projects.
+
+                Currently a senior at XYZ High School, I have 3 years of experience babysitting children ages 7 to 11.
+                Valued for my dependability and sound judgment, I have become the weekend and “date night” babysitter of
+                choice for several families in the Oak Ridge subdivision.
+
+                I strive to provide a warm, fun and nurturing environment in all babysitting assignments. My goal is for
+                parents to experience worry-free time away from home knowing that their children are in competent hands.
+
+                I am an honor roll student; certified in first aid and CPR by the American Red Cross; and a licensed
+                driver with a safe driving record, reliable transportation and a flexible afternoon and evening
+                schedule.
+
+                Would you like to set up a meeting to see if I would be a good fit for you and your family? You can call
+                me at 555-555-5555 or email lm@somedomain.com. Thank you for your time.
+
+                Sincerely,</p>
+
+        </div>
+        <br>
+        <div class="applybutton">
+            <!-- <a class="btn btn-outline-light my-2 my-sm-0" href="signUp.html">Sign up</a> -->
+            <a class="btn btn-success" href="application.html">Apply for the job?</a>
+            <a class="btn btn-warning" href="messagesBox.html">Send Message</a>
+            <a rel="prev" type="button" class="btn btn-light" href="forParents.html" style="float: right;">Go back</a>
+        </div>
+
+    </div>
+</div>
+
+</html>

@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>I.Helpr Homepage</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* Modify the background color */
+        .navbar-custom {
+            background-color: #83bca9;
+        }
+
+        /* Modify brand and text color */
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: #28493e;
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <!-- <link href="homepage.css" rel="stylesheet">
+    <link href="myPage.css" rel="stylesheet"> -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/homePage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/myPage.css' %}">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-custom navbar-expand-md navbar-dark fixed-top">
+            <a class="navbar-brand" href="homepage.html">I.Helpr</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="homepage.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="forParents.html">For Parents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="forSitters.html">For Sitters</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="myPage.html">My Page</a>
+                    </li>
+                </ul>
+                {% if member_no == None %}
+                <a class="btn btn-outline-light my-2 my-sm-0" href="signUp.html">Sign up</a>
+                <a class="btn btn-outline-light my-2 my-sm-0" href="logIn.html">Log in</a>
+                {% else %}
+                <a class="btn btn-outline-light my-2 my-sm-0" href="myPage">Hello {{ member_name }}!</a>
+                <a class="btn btn-outline-light my-2 my-sm-0" href="log_out">Log Out</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <div class="sidenav">
+        <a href="myPage.html">My Page</a>
+        <a href="messages.html">Messages</a>
+        <a href="myFavorite.html">My favorite</a>
+        <a href="myPosts.html">My posts</a>
+    </div>
+    <div class="container">
+        <h2>My Page</h2>
+        <div class="col-md-12 ">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h4 style="color:#88beac;">User Profile</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <img alt="User Pic"
+                                src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+                                id="profile-image1" class="img-circle img-responsive">
+                            <div style="color:#999; margin: 30px; font-size: 30px;">Hi, Ji Won. You are logged in as a
+                                sitter user!</div>
+                        </div>
+                        <br>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <hr style="margin:7px 0 7px 0;">
+                    <div class="row">
+                        <div class="col-sm-3 tital ">Name:</div>
+                        <div class="col-sm-9 ">Ji Won Choi</div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="bot-border"></div>
+
+                    <div class="row">
+                        <div class="col-sm-3 tital ">Email:</div>
+                        <div class="col-sm-9 ">jiwonchoi.123@gmail.com</div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="bot-border"></div>
+
+                    <div class="row">
+                        <div class="col-sm-3 tital ">Contact Number:</div>
+                        <div class="col-sm-9 ">010 9999 8888</div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="bot-border"></div>
+
+                    <div class="row">
+                        <div class="col-sm-3 tital ">Date of Birth:</div>
+                        <div class="col-sm-9 ">980111</div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="bot-border"></div>
+
+                    <div class="row">
+                        <div class="col-sm-3 tital ">Gender:</div>
+                        <div class="col-sm-9 ">Female</div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="bot-border"></div>
+
+                    <div class="row">
+                        <div class="col-sm-3 tital ">Agree to work under CCTV:</div>
+                        <div class="col-sm-9 ">No</div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="bot-border"></div>
+
+                    <div class="row">
+                        <div class="col-sm-3 tital ">Agree to criminal history check:</div>
+                        <div class="col-sm-9 ">Yes</div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="bot-border"></div>
+                </div>
+                <button class="btn btn-info" style="float:right;">Edit</button>
+            </div>
+
+            <hr style="margin:55px 0 10px 0;">
+            <h4 style="color:#88beac;">My Rating & Reviews</h4>
+        </div>
+        <div class="panel-body">
+            <div class="col-sm-12">
+                <div class="rating-block">
+                    <h5>Average user rating</h5>
+                    <h2 class="bold padding-bottom-7">4.3 <small>/ 5</small></h2>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <br>
+                        <h5>Reviews</h5>
+                        <hr />
+                        <div class="review">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="review-name"><a href="#">Jin Kim</a></div>
+                                    <div class="review-date">September 10, 2020</div>
+                                </div>
+                                <div class="col-sm-9">
+                                    <h6 class="bold padding-bottom-7">4.6 <small>/ 5</small></h6>
+                                    <div class="review-title"><b>It was great!</b></div>
+                                    <div class="review-description">I really liked the service. I really liked the
+                                        service. I really liked the service. I really liked the service. I really liked
+                                        the service. I really liked the service.</div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="review-name"><a href="#">Harry Potter</a></div>
+                                    <div class="review-date">Feburary 22, 2020</div>
+                                </div>
+                                <div class="col-sm-9">
+                                    <h6 class="bold padding-bottom-7">4.9 <small>/ 5</small></h6>
+                                    <div class="review-title"><b>My kid really liked it.</b></div>
+                                    <div class="review-description">Thank you for taking care of my child. He
+                                        really enjoyed playing with you! </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="review-name"><a href="#">Kelly Pot</a></div>
+                                    <div class="review-date">January 30, 2019</div>
+                                </div>
+                                <div class="col-sm-9">
+                                    <h6 class="bold padding-bottom-7">4.0 <small>/ 5</small></h6>
+                                    <div class="review-title"><b> I was very satisfied.</b></div>
+                                    <div class="review-description">I was really satisfied with the service.
+                                        However, I think it would be better to @@@. I was really satisfied with the
+                                        service. However, I think it would be better to @@@. I was really satisfied with
+                                        the service. However, I think it would be better to @@@. I was really satisfied
+                                        with the service. However, I think it would be better to @@@.</div>
+                                </div>
+                            </div>
+                            <hr />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-12 ">
+                <h4 style="color:#88beac;">Applications</h4>
+                <div class="col-md-12">
+                    <h5>Manage my applications</h5>
+                    <table class="table table-hover" id="dev-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Date</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>I like children!</td>
+                                <td>September 30, 2020</td>
+                                <td><a class="btn btn-info" style="float: right;" href="application.html"
+                                        role="button">Edit</a></td>
+                                <td><button class="btn btn-danger">Cancel</button></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Hi, I am good at teaching.</td>
+                                <td>June 20, 2020</td>
+                                <td><a class="btn btn-info" style="float: right;" href="application.html"
+                                        role="button">Edit</a></td>
+                                <td><button class="btn btn-danger">Cancel</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>
